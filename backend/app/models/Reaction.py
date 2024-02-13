@@ -10,4 +10,4 @@ class Reaction(db.Model):
     message_id = db.Column(db.Integer, nullable=False) #foreign key
     encoded_text = db.Column(db.String, nullable=False)
     created_at = db.Column(db.Date, default=datetime.now)
-    updated_at = db.Column(db.Date, default=datetime.now, onupdate=datetime.now)
+    # updated_at = db.Column(db.Date, default=datetime.now, onupdate=datetime.now)
