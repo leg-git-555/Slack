@@ -12,3 +12,5 @@ def test3():
 
 def test6():
     pass
+def test5():
+    pass
