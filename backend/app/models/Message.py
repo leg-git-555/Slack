@@ -13,8 +13,8 @@ class Message(db.Model):
     updated_at = db.Column(db.Date, default=datetime.now, onupdate=datetime.now)
 
     workspace_id = db.Column(db.Integer, db.ForeignKey("workspaces.id"), nullable=False)
-    sender_id = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="SET NULL"))
-    receiver_id = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="SET NULL"))
+    sender_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    receiver_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     channel_id = db.Column(db.Integer, db.ForeignKey("channels.id"))
 
 

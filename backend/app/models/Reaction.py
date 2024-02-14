@@ -10,7 +10,7 @@ class Reaction(db.Model):
     encoded_text = db.Column(db.String, nullable=False)
     created_at = db.Column(db.Date, default=datetime.now)
 
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="SET NULL"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     message_id = db.Column(db.Integer, db.ForeignKey("messages.id"), nullable=False)
 
 
