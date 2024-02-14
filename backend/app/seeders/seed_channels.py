@@ -8,12 +8,12 @@ def seed_channels():
             "workspace_id": 1
         },
         {
-            "name": "channel2",
+            "name": "channel1",
             "owner_id": 1,
-            "workspace_id": 1
+            "workspace_id": 2
         },
         {
-            "name": "channel3",
+            "name": "channel2",
             "owner_id": 1,
             "workspace_id": 2
         },

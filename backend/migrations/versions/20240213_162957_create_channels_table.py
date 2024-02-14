@@ -27,6 +27,7 @@ def upgrade():
         sa.Column('workspace_id', sa.Integer(), nullable=False),
         sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
         sa.ForeignKeyConstraint(['workspace_id'], ['workspaces.id'], ),
+        sa.UniqueConstraint('name', 'workspace_id'),
         sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###

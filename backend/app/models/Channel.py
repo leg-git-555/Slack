@@ -7,14 +7,13 @@ class Channel(db.Model):
 
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
+    name = db.Column(db.String(50), nullable=False) # define unique constraint for name and workspace_id combination (done in migration)
     created_at = db.Column(db.Date, default=datetime.now)
     updated_at = db.Column(db.Date, default=datetime.now, onupdate=datetime.now)
 
     owner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     workspace_id = db.Column(db.Integer, db.ForeignKey("workspaces.id"), nullable=False)
 
-    c_index = db.UniqueConstraint('name', 'workspace_id') # define unique constraint for name and workspace_id combination
 
 
     owner = db.relationship("User", back_populates="channels")
