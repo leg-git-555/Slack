@@ -18,7 +18,7 @@ class User(db.Model):
     updated_at = db.Column(db.Date, default=datetime.now, onupdate=datetime.now)
 
 
-    workspaces = db.relationship("Workspace", back_populates="owner", cascade="all, delete-orphan")
+    user_workspaces = db.relationship("Workspace", back_populates="owner", cascade="all, delete-orphan")
     channels = db.relationship("Channel", back_populates="owner")
     messages = db.relationship("Message", back_populates="owner")
     reactions = db.relationship("Reaction", back_populates="user")

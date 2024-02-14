@@ -12,6 +12,7 @@ wtforms = "*"
 flask-wtf = "*"
 flask-migrate = "*"
 alembic = "*"
+passlib = "*"
 
 [dev-packages]
 pylint = "*"
