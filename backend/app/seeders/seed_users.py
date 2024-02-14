@@ -1,4 +1,5 @@
 from passlib.hash import sha256_crypt
+from sqlalchemy.sql import text
 from ..models import db, User
 
 def seed_users():
@@ -9,7 +10,7 @@ def seed_users():
             "username": "haolam",
             "hashed_password": sha256_crypt.encrypt("password"),
             "email": "haolam@user.io",
-            
+
         },
         {
             "first_name": "Nicky",
@@ -30,3 +31,7 @@ def seed_users():
     for user in users:
         db.session.add(User(**user))
         db.session.commit()
+
+def undo_users():
+    db.session.execute(text("DELETE FROM users"))
+    db.session.commit()

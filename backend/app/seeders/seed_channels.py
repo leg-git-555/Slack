@@ -1,4 +1,6 @@
+from sqlalchemy.sql import text
 from ..models import db, Channel
+
 
 def seed_channels():
     channels = [
@@ -23,3 +25,8 @@ def seed_channels():
     for channel in channels:
         db.session.add(Channel(**channel))
         db.session.commit()
+
+
+def undo_channels():
+    db.session.execute(text("DELETE FROM channels"))
+    db.session.commit()
