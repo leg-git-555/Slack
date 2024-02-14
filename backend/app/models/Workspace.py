@@ -14,6 +14,6 @@ class Workspace(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
 
-    owner = db.relationship("User", back_populates="user_workspaces")
+    # owner = db.relationship("User", back_populates="user_workspaces")
     channels = db.relationship("Channel", back_populates="workspace", cascade="all, delete-orphan")
     users = db.relationship('User', secondary="user_workspaces", back_populates="workspaces")

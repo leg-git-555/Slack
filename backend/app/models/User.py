@@ -1,5 +1,6 @@
 from datetime import datetime
 from .db import db
+from .Message import Message
 
 
 class User(db.Model):
@@ -18,8 +19,8 @@ class User(db.Model):
     updated_at = db.Column(db.Date, default=datetime.now, onupdate=datetime.now)
 
 
-    user_workspaces = db.relationship("Workspace", back_populates="owner", cascade="all, delete-orphan")
+    # user_workspaces = db.relationship("Workspace", back_populates="owner", cascade="all, delete-orphan")
     channels = db.relationship("Channel", back_populates="owner")
-    messages = db.relationship("Message", back_populates="owner")
+    messages = db.relationship("Message", back_populates="owner", foreign_keys=[Message.sender_id])
     reactions = db.relationship("Reaction", back_populates="user")
     workspaces = db.relationship('Workspace', secondary="user_workspaces", back_populates="users")
