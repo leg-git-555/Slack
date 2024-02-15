@@ -28,10 +28,26 @@ class User(db.Model):
     workspaces = db.relationship('Workspace', secondary="user_workspaces", back_populates="users")
 
 
+    @validates('first_name')
+    def validate_first_name(self, _, val):
+        if not len(val):
+            raise ValueError({"first_name": "First name is required"})
+        return val
+
+
+    @validates('last_name')
+    def validate_last_name(self, _, val):
+        if not len(val):
+            raise ValueError({"last_name": "Last name is required"})
+        return val
+
+
     @validates('username')
     def validate_username(self, _, val):
         if len(val) < 4:
             raise ValueError({"message": "Username must be at least 4 characters long"})
+        if len([user for user in User.query.all() if user.username == val]):
+            raise ValueError({"message": "User with that username already exists"})
         return val
 
 
@@ -46,4 +62,6 @@ class User(db.Model):
     def validate_email(self, _, val):
         if "@" not in val:
             raise ValueError({"message": "Invalid email"})
+        if len([user for user in User.query.all() if user.email == val]):
+            raise ValueError({"message": "User with that email already exists"})
         return val
