@@ -25,3 +25,8 @@ class Workspace(db.Model):
         if len(val) < 4:
             raise ValueError({"message": "Name must be at least 4 characters long"})
         return val
+
+
+    @classmethod
+    def name_to_ids(cls):
+        return { workspace.name: workspace.id for workspace in cls.query.all() }

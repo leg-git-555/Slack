@@ -1,38 +1,41 @@
 from sqlalchemy.sql import text
-from ..models import db, Channel
+from ..models import db, Channel, Workspace, User
 
 
 def seed_channels():
+    username_to_ids = User.username_to_ids()
+    workspace_name_to_ids = Workspace.name_to_ids()
+
     channels = [
         {
             "name": "general",
-            "owner_id": 1,
-            "workspace_id": 1
+            "owner_id": username_to_ids["haolam"],
+            "workspace_id": workspace_name_to_ids["aA Union"]
         },
         {
             "name": "homework discussion",
-            "owner_id": 1,
-            "workspace_id": 1
+            "owner_id": username_to_ids["haolam"],
+            "workspace_id": workspace_name_to_ids["aA Union"]
         },
         {
             "name": "assessments",
-            "owner_id": 1,
-            "workspace_id": 1
+            "owner_id": username_to_ids["haolam"],
+            "workspace_id": workspace_name_to_ids["aA Union"]
         },
         {
             "name": "general",
-            "owner_id": 1,
-            "workspace_id": 2
+            "owner_id": username_to_ids["haolam"],
+            "workspace_id": workspace_name_to_ids["hao-nick-nicky"]
         },
         {
             "name": "random",
-            "owner_id": 1,
-            "workspace_id": 2
+            "owner_id": username_to_ids["haolam"],
+            "workspace_id": workspace_name_to_ids["hao-nick-nicky"]
         },
         {
             "name": "lecture questions",
-            "owner_id": 1,
-            "workspace_id": 2
+            "owner_id": username_to_ids["haolam"],
+            "workspace_id": workspace_name_to_ids["hao-nick-nicky"]
         },
 
     ]

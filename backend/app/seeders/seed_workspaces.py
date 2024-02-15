@@ -1,28 +1,30 @@
 from sqlalchemy.sql import text
-from ..models import db, Workspace
+from ..models import db, Workspace, User
 
 
 def seed_workspaces():
+    username_to_ids = User.username_to_ids()
+
     workspaces = [
         {
             "name": "aA Union",
-            "owner_id": 1
+            "owner_id": username_to_ids["haolam"]
         },
         {
             "name": "hao-nick-nicky",
-            "owner_id": 1
+            "owner_id": username_to_ids["haolam"]
         },
         {
             "name": "hao-nick",
-            "owner_id": 1
+            "owner_id": username_to_ids["haolam"]
         },
         {
             "name": "hao-nicky",
-            "owner_id": 1
+            "owner_id": username_to_ids["haolam"]
         },
         {
             "name": "nick-nicky",
-            "owner_id": 1
+            "owner_id": username_to_ids["haolam"]
         }
     ]
 

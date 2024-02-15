@@ -65,3 +65,8 @@ class User(db.Model):
         if len([user for user in User.query.all() if user.email == val]):
             raise ValueError({"message": "User with that email already exists"})
         return val
+
+
+    @classmethod
+    def username_to_ids(cls):
+        return { user.username: user.id for user in cls.query.all() }
