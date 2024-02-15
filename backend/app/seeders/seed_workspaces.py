@@ -1,22 +1,35 @@
 from sqlalchemy.sql import text
-from ..models import db, Workspace
+from ..models import db, Workspace, User
 
 
 def seed_workspaces():
+    username_to_ids = User.username_to_ids()
+
     workspaces = [
         {
-            "name": "slack1",
-            "owner_id": 1
+            "name": "aA Union",
+            "owner_id": username_to_ids["luffy"]
         },
         {
-            "name": "slack2",
-            "owner_id": 1
+            "name": "hao-nick-nicky",
+            "owner_id": username_to_ids["luffy"]
+        },
+        {
+            "name": "hao-nick",
+            "owner_id": username_to_ids["luffy"]
+        },
+        {
+            "name": "hao-nicky",
+            "owner_id": username_to_ids["luffy"]
+        },
+        {
+            "name": "nick-nicky",
+            "owner_id": username_to_ids["luffy"]
         }
     ]
 
-    for workspace in workspaces:
-        db.session.add(Workspace(**workspace))
-        db.session.commit()
+    [db.session.add(Workspace(**workspace)) for workspace in workspaces]
+    db.session.commit()
 
 
 def undo_workspaces():

@@ -1,4 +1,5 @@
 from datetime import datetime
+from sqlalchemy.orm import validates
 from .db import db
 
 
@@ -14,5 +15,13 @@ class Reaction(db.Model):
     message_id = db.Column(db.Integer, db.ForeignKey("messages.id"), nullable=False)
 
 
+    """ one-to-many """
     message = db.relationship("Message", back_populates="reactions")
     user = db.relationship("User", back_populates="reactions")
+
+
+    @validates('encoded_text')
+    def validate_message(self, _, val):
+        if not len(val):
+            raise ValueError({ "encoded_text": "Reaction is required" })
+        return val

@@ -1,30 +1,47 @@
 from sqlalchemy.sql import text
-from ..models import db, Channel
+from ..models import db, Channel, Workspace, User
 
 
 def seed_channels():
+    username_to_ids = User.username_to_ids()
+    workspace_name_to_ids = Workspace.name_to_ids()
+
     channels = [
         {
-            "name": "channel1",
-            "owner_id": 1,
-            "workspace_id": 1
+            "name": "general",
+            "owner_id": username_to_ids["haolam"],
+            "workspace_id": workspace_name_to_ids["aA Union"]
         },
         {
-            "name": "channel1",
-            "owner_id": 1,
-            "workspace_id": 2
+            "name": "homework discussion",
+            "owner_id": username_to_ids["haolam"],
+            "workspace_id": workspace_name_to_ids["aA Union"]
         },
         {
-            "name": "channel2",
-            "owner_id": 1,
-            "workspace_id": 2
+            "name": "assessments",
+            "owner_id": username_to_ids["haolam"],
+            "workspace_id": workspace_name_to_ids["aA Union"]
+        },
+        {
+            "name": "general",
+            "owner_id": username_to_ids["haolam"],
+            "workspace_id": workspace_name_to_ids["hao-nick-nicky"]
+        },
+        {
+            "name": "random",
+            "owner_id": username_to_ids["haolam"],
+            "workspace_id": workspace_name_to_ids["hao-nick-nicky"]
+        },
+        {
+            "name": "lecture questions",
+            "owner_id": username_to_ids["haolam"],
+            "workspace_id": workspace_name_to_ids["hao-nick-nicky"]
         },
 
     ]
 
-    for channel in channels:
-        db.session.add(Channel(**channel))
-        db.session.commit()
+    [db.session.add(Channel(**channel)) for channel in channels]
+    db.session.commit()
 
 
 def undo_channels():
