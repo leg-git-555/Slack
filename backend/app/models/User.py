@@ -34,7 +34,7 @@ class User(db.Model):
     @validates('first_name')
     def validate_first_name(self, _, val):
         if not len(val):
-            raise ValueError({"first_name": "First name is required"})
+            raise ValueError({ "first_name": "First name is required" })
         return val
 
 
@@ -50,14 +50,14 @@ class User(db.Model):
         if len(val) < 4:
             raise ValueError({"message": "Username must be at least 4 characters long"})
         if len([user for user in User.query.all() if user.username == val]):
-            raise ValueError({"message": "User with that username already exists"})
+            raise ValueError({ "username": "User with that username already exists" })
         return val
 
 
     @validates('hashed_password')
     def validate_hashed_password(self, _, val):
         if len(val) < 6:
-            raise ValueError({"message": "Password must be at least 6 characters long"})
+            raise ValueError({ "password": "Password must be at least 6 characters long" })
         return sha256_crypt.hash(val)
 
 
@@ -66,7 +66,7 @@ class User(db.Model):
         if "@" not in val:
             raise ValueError({"message": "Invalid email"})
         if len([user for user in User.query.all() if user.email == val]):
-            raise ValueError({"message": "User with that email already exists"})
+            raise ValueError({ "email": "User with that email already exists" })
         return val
 
 

@@ -26,7 +26,7 @@ class Workspace(db.Model):
     @validates('name')
     def validate_name(self, _, val):
         if len(val) < 4:
-            raise ValueError({"message": "Name must be at least 4 characters long"})
+            raise ValueError({ "name": "Name must be at least 4 characters long" })
         return val
 
 

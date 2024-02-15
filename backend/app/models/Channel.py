@@ -1,6 +1,7 @@
 from datetime import datetime
 from sqlalchemy.orm import validates
 from .db import db
+from .Workspace import Workspace
 
 
 class Channel(db.Model):
@@ -25,5 +26,10 @@ class Channel(db.Model):
     @validates('name')
     def validate_name(self, _, val):
         if len(val) < 4:
-            raise ValueError({"message": "Name must be at least 4 characters long"})
+            raise ValueError({ "name": "Name must be at least 4 characters long" })
         return val
+
+
+    @classmethod
+    def channel_and_workspace_name_to_ids(cls):
+        return { f"{c.name}:{Workspace.query.get(c.workspace_id).name}": c.id for c in cls.query.all() }

@@ -1,4 +1,5 @@
 from datetime import datetime
+from sqlalchemy.orm import validates
 from .db import db
 
 
@@ -12,9 +13,8 @@ class Message(db.Model):
     created_at = db.Column(db.Date, default=datetime.now)
     updated_at = db.Column(db.Date, default=datetime.now, onupdate=datetime.now)
 
-    workspace_id = db.Column(db.Integer, db.ForeignKey("workspaces.id"), nullable=False)
     sender_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    receiver_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    receiver_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     channel_id = db.Column(db.Integer, db.ForeignKey("channels.id"))
 
 
@@ -22,3 +22,10 @@ class Message(db.Model):
     owner = db.relationship("User", back_populates="messages", foreign_keys=[sender_id])
     reactions = db.relationship("Reaction", back_populates="message", cascade="all, delete-orphan")
     channel = db.relationship("Channel", back_populates="messages")
+
+
+    @validates('message')
+    def validate_message(self, _, val):
+        if not len(val):
+            raise ValueError({ "message": "Message is required" })
+        return val

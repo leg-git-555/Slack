@@ -1,6 +1,7 @@
 from sqlalchemy.sql import text
 from ..models import db, User
 
+
 def seed_users():
     users = [
         {
@@ -72,6 +73,7 @@ def seed_users():
 
     [db.session.add(User(**user)) for user in users]
     db.session.commit()
+
 
 def undo_users():
     db.session.execute(text("DELETE FROM users"))

@@ -2,7 +2,9 @@ from flask.cli import AppGroup
 from .seed_users import seed_users, undo_users
 from .seed_workspaces import seed_workspaces, undo_workspaces
 from .seed_channels import seed_channels, undo_channels
-from .seed_membership import seed_memberships, undo_memberships
+from .seed_memberships import seed_memberships, undo_memberships
+from .seed_messages import seed_messages, undo_messages
+from .seed_reactions import seed_reactions, undo_reactions
 
 seed_cmd = AppGroup("seed")
 
@@ -28,6 +30,8 @@ def seed_all_tables():
   seed_workspaces()
   seed_channels()
   seed_memberships()
+  seed_messages()
+  seed_reactions()
 
 
 def unseed_all_tables():
@@ -35,3 +39,5 @@ def unseed_all_tables():
   undo_channels()
   undo_workspaces()
   undo_users()
+  undo_messages()
+  undo_reactions()

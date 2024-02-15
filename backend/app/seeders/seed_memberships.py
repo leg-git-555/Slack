@@ -56,6 +56,7 @@ def seed_memberships():
         user.workspaces.append(workspace)
     db.session.commit()
 
+
 def undo_memberships():
     db.session.execute(text("DELETE FROM memberships"))
     db.session.commit()
