@@ -1,4 +1,5 @@
 from datetime import datetime
+from sqlalchemy.orm import validates
 from .db import db
 
 
@@ -14,6 +15,13 @@ class Workspace(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
 
-    # owner = db.relationship("User", back_populates="user_workspaces")
+    owner = db.relationship("User", back_populates="user_workspaces")
     channels = db.relationship("Channel", back_populates="workspace", cascade="all, delete-orphan")
     users = db.relationship('User', secondary="user_workspaces", back_populates="workspaces")
+
+
+    @validates('name')
+    def validate_name(self, _, val):
+        if len(val) < 4:
+            raise ValueError({"message": "Name must be at least 4 characters long"})
+        return val

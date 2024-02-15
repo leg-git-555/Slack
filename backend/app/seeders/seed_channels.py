@@ -5,17 +5,32 @@ from ..models import db, Channel
 def seed_channels():
     channels = [
         {
-            "name": "channel1",
+            "name": "general",
             "owner_id": 1,
             "workspace_id": 1
         },
         {
-            "name": "channel1",
+            "name": "homework discussion",
+            "owner_id": 1,
+            "workspace_id": 1
+        },
+        {
+            "name": "assessments",
+            "owner_id": 1,
+            "workspace_id": 1
+        },
+        {
+            "name": "general",
             "owner_id": 1,
             "workspace_id": 2
         },
         {
-            "name": "channel2",
+            "name": "random",
+            "owner_id": 1,
+            "workspace_id": 2
+        },
+        {
+            "name": "lecture questions",
             "owner_id": 1,
             "workspace_id": 2
         },

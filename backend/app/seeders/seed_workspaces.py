@@ -5,11 +5,23 @@ from ..models import db, Workspace
 def seed_workspaces():
     workspaces = [
         {
-            "name": "slack1",
+            "name": "aA Union",
             "owner_id": 1
         },
         {
-            "name": "slack2",
+            "name": "hao-nick-nicky",
+            "owner_id": 1
+        },
+        {
+            "name": "hao-nick",
+            "owner_id": 1
+        },
+        {
+            "name": "hao-nicky",
+            "owner_id": 1
+        },
+        {
+            "name": "nick-nicky",
             "owner_id": 1
         }
     ]
