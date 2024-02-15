@@ -48,7 +48,7 @@ class User(db.Model):
     @validates('username')
     def validate_username(self, _, val):
         if len(val) < 4:
-            raise ValueError({"message": "Username must be at least 4 characters long"})
+            raise ValueError({"username": "Username must be at least 4 characters long"})
         if len([user for user in User.query.all() if user.username == val]):
             raise ValueError({ "username": "User with that username already exists" })
         return val
@@ -57,7 +57,7 @@ class User(db.Model):
     @validates('hashed_password')
     def validate_hashed_password(self, _, val):
         if len(val) < 6:
-            raise ValueError({ "password": "Password must be at least 6 characters long" })
+            raise ValueError({ "hashed_password": "Password must be at least 6 characters long" })
         return sha256_crypt.hash(val)
 
 

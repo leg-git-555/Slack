@@ -35,9 +35,9 @@ def seed_all_tables():
 
 
 def unseed_all_tables():
+  undo_reactions()
+  undo_messages()
   undo_memberships()
   undo_channels()
   undo_workspaces()
   undo_users()
-  undo_messages()
-  undo_reactions()
