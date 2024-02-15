@@ -21,11 +21,14 @@ class User(db.Model):
     updated_at = db.Column(db.Date, default=datetime.now, onupdate=datetime.now)
 
 
+    """ one-to-many """
     user_workspaces = db.relationship("Workspace", back_populates="owner", cascade="all, delete-orphan")
     channels = db.relationship("Channel", back_populates="owner")
     messages = db.relationship("Message", back_populates="owner", foreign_keys=[Message.sender_id])
     reactions = db.relationship("Reaction", back_populates="user")
-    workspaces = db.relationship('Workspace', secondary="user_workspaces", back_populates="users")
+
+    """ many-to-many """
+    workspaces = db.relationship('Workspace', secondary="memberships", back_populates="users")
 
 
     @validates('first_name')

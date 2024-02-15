@@ -16,6 +16,7 @@ class Channel(db.Model):
     workspace_id = db.Column(db.Integer, db.ForeignKey("workspaces.id"), nullable=False)
 
 
+    """ one-to-many """
     owner = db.relationship("User", back_populates="channels")
     workspace = db.relationship("Workspace", back_populates="channels")
     messages = db.relationship("Message", back_populates="channel", cascade="all, delete-orphan")

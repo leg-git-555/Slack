@@ -18,6 +18,7 @@ class Message(db.Model):
     channel_id = db.Column(db.Integer, db.ForeignKey("channels.id"))
 
 
+    """ one-to-many """
     owner = db.relationship("User", back_populates="messages", foreign_keys=[sender_id])
     reactions = db.relationship("Reaction", back_populates="message", cascade="all, delete-orphan")
     channel = db.relationship("Channel", back_populates="messages")

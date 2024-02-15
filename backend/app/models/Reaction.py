@@ -14,5 +14,6 @@ class Reaction(db.Model):
     message_id = db.Column(db.Integer, db.ForeignKey("messages.id"), nullable=False)
 
 
+    """ one-to-many """
     message = db.relationship("Message", back_populates="reactions")
     user = db.relationship("User", back_populates="reactions")

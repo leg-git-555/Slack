@@ -49,7 +49,7 @@ def seed_users():
                 {
             "first_name": "Robin",
             "last_name": "Nico",
-            "username": "Robin",
+            "username": "robin",
             "hashed_password": "password7",
             "email": "robin@user.io"
 
@@ -57,22 +57,21 @@ def seed_users():
         {
             "first_name": "Mihawk",
             "last_name": "Dracule",
-            "username": "Mihawk",
+            "username": "mihawk",
             "hashed_password": "password8",
             "email": "mihawk@user.io"
         },
         {
             "first_name": "Ace",
             "last_name": "Portgas D.",
-            "username": "Acee",
+            "username": "acee",
             "hashed_password": "password9",
             "email": "ace@user.io"
         }
     ]
 
-    for user in users:
-        db.session.add(User(**user))
-        db.session.commit()
+    [db.session.add(User(**user)) for user in users]
+    db.session.commit()
 
 def undo_users():
     db.session.execute(text("DELETE FROM users"))

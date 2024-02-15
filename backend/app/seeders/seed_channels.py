@@ -40,9 +40,8 @@ def seed_channels():
 
     ]
 
-    for channel in channels:
-        db.session.add(Channel(**channel))
-        db.session.commit()
+    [db.session.add(Channel(**channel)) for channel in channels]
+    db.session.commit()
 
 
 def undo_channels():

@@ -8,29 +8,28 @@ def seed_workspaces():
     workspaces = [
         {
             "name": "aA Union",
-            "owner_id": username_to_ids["haolam"]
+            "owner_id": username_to_ids["luffy"]
         },
         {
             "name": "hao-nick-nicky",
-            "owner_id": username_to_ids["haolam"]
+            "owner_id": username_to_ids["luffy"]
         },
         {
             "name": "hao-nick",
-            "owner_id": username_to_ids["haolam"]
+            "owner_id": username_to_ids["luffy"]
         },
         {
             "name": "hao-nicky",
-            "owner_id": username_to_ids["haolam"]
+            "owner_id": username_to_ids["luffy"]
         },
         {
             "name": "nick-nicky",
-            "owner_id": username_to_ids["haolam"]
+            "owner_id": username_to_ids["luffy"]
         }
     ]
 
-    for workspace in workspaces:
-        db.session.add(Workspace(**workspace))
-        db.session.commit()
+    [db.session.add(Workspace(**workspace)) for workspace in workspaces]
+    db.session.commit()
 
 
 def undo_workspaces():
