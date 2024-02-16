@@ -1,5 +1,6 @@
-from flask import Blueprint
-from ..models import  Workspace
+from flask import Blueprint, request
+from sqlalchemy.exc import SQLAlchemyError
+from ..models import  db, Workspace
 
 workspaces_bp = Blueprint("workspace", __name__, url_prefix="/workspaces")
 
@@ -22,3 +23,28 @@ def workspace(id):
     channels = [channel.to_dict() for channel in workspace.channels]
 
     return { **workspace.to_dict(), "Owner": owner, "Members": members, "Channels": channels }
+
+
+@workspaces_bp.route("/", methods=["POST"])
+def create_workspace():
+    data = request.json
+    result = Workspace.validate(data)
+
+    if (result != True):
+        return result
+
+    new_workspace = Workspace(**data)
+    db.session.add(new_workspace)
+    db.session.commit()
+
+    return new_workspace.to_dict(), 201
+
+
+@workspaces_bp.route("/", methods=["PUT"])
+def update_workspace():
+    pass
+
+
+@workspaces_bp.route("/", methods=["DELETE"])
+def delete_workspace():
+    pass

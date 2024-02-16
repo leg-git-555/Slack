@@ -23,16 +23,18 @@ class Workspace(db.Model):
     users = db.relationship('User', secondary="memberships", back_populates="workspaces")
 
 
-    @validates('name')
-    def validate_name(self, _, val):
-        if len(val) < 4:
-            raise ValueError({ "name": "Name must be at least 4 characters long" })
-        return val
-
-
     @classmethod
     def name_to_ids(cls):
         return { workspace.name: workspace.id for workspace in cls.query.all() }
+
+
+    @classmethod
+    def validate(cls, data):
+        if len(data["name"]) < 4:
+            return { "name": "Name must be at least 4 characters long" }, 400
+        if cls.query.filter(cls.name == data["name"]).one_or_none():
+            return { "name": "This name is alrady taken" }, 500
+        return True
 
 
     def to_dict(self):
