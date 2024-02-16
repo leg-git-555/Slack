@@ -4,69 +4,64 @@
 
 ### Sign Up
 
-* As an unregistered and unauthorized user, I want to be able to sign up for the website via a sign-up form.
-  * When I'm on the `/signup` page:
-    * I would like to be able to enter my first name, last name, email, username, and preferred password on a clearly laid out form.
-    * I would like the website to log me in upon successful completion of the sign-up form.
-      * So that I can seamlessly access the site's functionality
-  * When I enter invalid data on the sign-up form:
-    * I would like the website to inform me of the validations I failed to pass, and repopulate the form with my valid entries (except my password).
-    * So that I can try again without needing to refill forms I entered valid data into.
+* Unregistered and unauthorized users are able to sign up for the website via a sign-up form.
+  * When on the `/signup` page:
+    * A user is able to enter their first name, last name, email, username, and preferred password on a clearly laid out form.
+    * A user will be logged in upon successful completion of the sign-up form, seamlessly accessing the site's functionality
+  * When a user enters invalid data on the sign-up form:
+    * The website will display validation errors in the form, and also repopulate the form with the valid entries (except password). <br />
+    This allows the user to edit the form without having to re-enter valid data.
 
 ### Log in
 
-* As a registered and unauthorized user, I want to be able to log in to the website via a log-in form.
-  * When I'm on the `/login` page:
-    * I would like to be able to enter my email or username with my password on a clearly laid out form.
-    * I would like the website to log me in upon successful completion of the log-in form.
-      * So that I can seamlessly access my profile page whiche displays my workspace, channels, and dms.
-  * When I enter invalid data on the log-in form:
-    * I would like the website to inform me of the validations I failed to pass, and repopulate the form with my valid entries (except my password).
-      * So that I can try again without needing to refill forms I entered valid data into.
-
+* Registered but unauthorized users may log into the website via a log-in form.
+  * When on the `/login` page:
+    * A user is able to enter their email or username with their password on a clearly laid out form.
+    * A user will be logged in upon successful completion of the sign-up form, seamlessly accessing the site's functionality <br />
+    (profile page which displays workspaces, channels, and dms)
+  * When a user enters invalid data on the log-in form:
+    * The website will display validation errors in the form, and also repopulate the form with the valid entries (except password). <br />
+    This allows the user to edit the form without having to re-enter valid data.
 ### Demo User
 
-* As an unregistered and unauthorized user, I would like an easy to find and clear button on both the `/signup` and `/login` pages to allow me to visit the site as a guest without signing up or logging in.
-  * When I'm on either the `/signup` or `/login` pages:
-    * I can click on a Demo User button to log me in and allow me access as a normal user.
-      * So that I can test the site's features and functionality without needing to stop and enter credentials.
+* Unregistered and unauthorized users can login as a demo user via the a clear button on both the `/signup` and `/login` pages. <br />
+Clikc either button logs the user in as a guest so they can visit the site as a guest
+  * When on either the `/signup` or `/login` page:
+    * A user can click on a 'Demo User' button to log in and use the site as a standard user
 
 ### Log Out
 
-* As a logged in user, I want to log out via an easy to find log out button on the navigation bar.
-  * While on any page of the site:
-    * I can log out of my account and be redirected to the sign in page.
-      * So that I can easily log out to keep my information secure.
+* Logged in users can log out via an easy to find log out button on the navigation bar.
+    * The log out button is in the nav bar, which appears on all pages of the site. Upon logout, the user is redirected to the <br />
+    sign in page.
 
 ## Workspaces
 
 ### View Workspaces
 
 * As a logged in user, I want to be able to view all workspaces of which I own or just as a member.
-  * When I'm on the `/workspaces` page:
-    * I can see my workspace lists I owned or just as a member.
-      * Every workspace has a log-in button, so that I can pick one of the workspaces I want to log-in.
-  * When I click workspace log-in button, the page will redirect to `/workspaces/:workspaceId` page which will show the workspace details.
+  * When on the `/workspaces` page:
+    * A user can see the workspaces of which they own or are a member. 
+    * When a users clicks on a workspace card, the page will redirect to `/workspaces/:workspaceId`, where they're able to see channels and dms
 
 ### Create New Workspaces
 
-* As a logged in user, I want to able to create a new workspace.
-  * When I click on the "CREATE A NEW WORKSPACE" button, I will be redirect to `/workspaces/get-start` page:
-    * I can see a "Create a Workspace button", I also can have another option to open a workspace I owned or joined.
-    * When I click the "Create a Workspace" button, I will be redirect to `/workspaces/:workspaceId` page:
-      * I would like to be able to enter my workspace name, my profile photo, coworkers' email list, and channel name step by step with detailed tips.
-      * I would like the website to log me in successful completion of the sign-up steps.
-    * When I enter invalid data on the sign-up form:
-    * I would like the website to inform me of the validations I failed to pass, and repopulate the form with my valid entries.
-    * So that I can try again without needing to refill forms I entered valid data into.
+* Logged in users can create a new workspace.
+  * When a user clicks on the "CREATE A NEW WORKSPACE" button, they are redirected to `/workspaces/new` page:
+    * the `/workspaces/new` page has a simple form that prompts the user to input a workspace name, a first channel, <br />
+    and a list of member emails
+      * an invalid sign-up form shows validation errors in the form but also repopulates the form with valid data
+    * successful login redirects the user to the new workspace (`/workspaces/:workspaceId`)
 
 ### Updating Workspaces
-
-
+* An 'edit workspace' button appears below each workspace on the `/workspaces` page that the user owns. <br /> 
+    * Clicking the button opens a modal that shows the workspace title, channels, and members
+    * The user can edit the title, add/remove channels, add/remove members
 
 ### Deleting Workspaces
-
-
+* A 'delete workspace' button appears below each workspace on the `/workspaces` page that the user owns . <br /> 
+    * confirmation modal??
+    * Clicking the button deletes the workspace
 
 ## Channels
 
