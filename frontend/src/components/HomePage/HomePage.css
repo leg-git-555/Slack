@@ -1,0 +1,43 @@
+#root-container {
+  margin: 10px;
+}
+
+
+#container {
+  display: grid;
+  grid-template-columns: 2fr 7fr;
+  width: 100%;
+  height: 930px;
+  margin-bottom: 10px;
+  /* background-color: #323436; */
+  border-radius: 10px;
+}
+
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+  background-color: #202020;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.selected {
+  background-color: #454242;
+  padding: 5px;
+  border-radius: 10px;
+  ;
+}
+
+#main-content {
+  background-color: rgb(30, 30, 30);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#workspaces:hover,
+#channels:hover,
+#direct-messages:hover {
+  cursor: pointer;
+}

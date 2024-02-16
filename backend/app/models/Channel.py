@@ -33,3 +33,12 @@ class Channel(db.Model):
     @classmethod
     def channel_and_workspace_name_to_ids(cls):
         return { f"{c.name}:{Workspace.query.get(c.workspace_id).name}": c.id for c in cls.query.all() }
+
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "owner_id": self.owner_id,
+            "workspace_id": self.workspace_id
+        }

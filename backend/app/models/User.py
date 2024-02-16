@@ -73,3 +73,15 @@ class User(db.Model):
     @classmethod
     def username_to_ids(cls):
         return { user.username: user.id for user in cls.query.all() }
+
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "username": self.username,
+            "email": self.email,
+            "profile_image_url": self.profile_image_url,
+            "is_deleted": self.is_deleted
+        }

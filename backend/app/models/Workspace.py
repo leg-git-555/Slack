@@ -33,3 +33,21 @@ class Workspace(db.Model):
     @classmethod
     def name_to_ids(cls):
         return { workspace.name: workspace.id for workspace in cls.query.all() }
+
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "owner_id": self.owner_id
+        }
+
+
+    def to_dict_details(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "owner_id": self.owner_id,
+            "created_at": self.created_at,
+            "updated_at": self.updated_at
+        }

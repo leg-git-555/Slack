@@ -1,1 +1,47 @@
-/* TODO: Add sitewide styles */
+:root {
+  --white: #FFFFFF;
+  --black: #000000;
+  --gray: #808080;
+  --dark-gray: #999999;
+  --light-gray: #CCCCCC;
+  --red: #FF5A5F;
+  --teal: #00525E;
+  --light-teal: #E8F0FE;
+  --light-yellow: #DEC963;
+  --yellow: rgb(171, 150, 2);
+  --green: rgb(0, 150, 0);
+  --blue: rgb(0, 150, 188);
+  --brown: rgb(122, 43, 29);
+  --dark-brown: rgb(110, 75, 75);
+  --chat-window-background: #4E4F50;
+  --my-message-background: #0084ff;
+  --other-message-background: #323436;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-size: 12pt;
+  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(27, 27, 27);
+  color: white;
+}
+
+.heading {
+  font-size: 25pt;
+  font-weight: bold;
+  word-break: break-word;
+}
+
+.subheading {
+  font-size: 17pt;
+  font-weight: bold;
+  word-break: break-word;
+}
