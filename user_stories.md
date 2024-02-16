@@ -66,16 +66,26 @@ Clikc either button logs the user in as a guest so they can visit the site as a 
 ## Channels
 
 ### View All Channels
+* Logged in users can view all channels in a workspace.
+* Channels appear on the left side of the page within a workspace
 
 ### Create Channels
+* Logged in users can create a new channel by clicking the 'create new channel' <br/>
+at the bottom of the channel list
+  * clicking the button opens a modal with a simple form where the user enters a <br/>channel name
+  * if a channel is successfully created, the modal closes and the the new channel <br/>appears in the channel list
+  * an invalid form submit shows validation errors in the form but also repopulates <br/>the form with valid data
 
 ### Update Channels
 
 ### Delete Channels
+* A channel owner or Workspace owner who is logged in can click the 'remove channel' button at the bottom of the channel list.
+  * Clicking the button opens a modal with a list of channels and a 'delete' button. The user can select channels to delete. Clicking the 'delete' button closes the modal and deletes the channel from the channel list.
 
 ## Messages
 
 ### View All Messages
+* A logged-in user's messages are oraganized via channels and direct messages on the left side of the page.
 
 ### Send Messages
 
