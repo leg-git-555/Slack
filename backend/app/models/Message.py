@@ -29,3 +29,14 @@ class Message(db.Model):
         if not len(val):
             raise ValueError({ "message": "Message is required" })
         return val
+
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "is_private": self.is_private,
+            "message": self.message,
+            "sender_id": self.sender_id,
+            "receiver_id": self.receiver_id,
+            "channel_id": self.channel_id
+        }
