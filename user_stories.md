@@ -77,6 +77,7 @@ at the bottom of the channel list
   * an invalid form submit shows validation errors in the form but also repopulates <br/>the form with valid data
 
 ### Update Channels
+* Logged in users who own the workspace or the channel can edit the channel name via a button
 
 ### Delete Channels
 * A channel owner or Workspace owner who is logged in can click the 'remove channel' button at the bottom of the channel list.
@@ -86,17 +87,27 @@ at the bottom of the channel list
 
 ### View All Messages
 * A logged-in user's messages are oraganized via channels and direct messages on the left side of the page.
+  * Clicking on a channel or direct message will open the channel or message conversation on the main part of the page
 
 ### Send Messages
+* A logged-in user can send a direct message or message in channel to workspace of which the belong
+  * Clicking on a channel or direct message will open the channel or message conversation on the main part of the page
+  * The bottom of the page will show a text area for the user to type a message. The textarea has a send icon; clicking the icon or pressing enter sends the message to the conversation
 
 ### Edit Messages
+* If a user hovers over a message that they authored, an edit button appears.
+  * Clicking the edit button will allow them to edit their message
 
 ### Delete Messages
+* If a user hovers over a message that they authored, a delete button appears.
+  * Clicking the delete button will allow them to delete their message
 
 ## Reactions
 
 ### View All Reactions
+* If a logged-in user who is a member of a workspace clicks on the reaction icon on the message,
 
-### Create Reactions
-
+### Send Reactions
+* If a logged-in user who is a member of a workspace clicks on the reaction icon on a message, they will add a reaction to the message
 ### Delete Reactions
+* If a logged-in user who is a member of a workspace clicks on the reaction icon on a message they have already reacted to, they will delete their reaction
