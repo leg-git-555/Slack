@@ -25,3 +25,13 @@ class Reaction(db.Model):
         if not len(val):
             raise ValueError({ "encoded_text": "Reaction is required" })
         return val
+
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "encoded_text": self.encoded_text,
+            "created_at": self.created_at,
+            "user_id": self.user_id,
+            "message_id": self.message_id
+        }
